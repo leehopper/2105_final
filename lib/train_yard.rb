@@ -38,10 +38,17 @@ class TrainYard
     end.uniq
   end
 
-  # def total_inventory
-  #   inventory = {}
-  #   @trains.each do |train|
-  #     train.cargo.keys.each do |car|
-  #
-  # end
+  def total_inventory
+    inventory = {}
+    cars_in_yard.each do |car|
+      @trains.each do |train|
+        if inventory.has_key?(car)
+          inventory[car] += train.count_cars(car)
+        elsif train.count_cars(car) > 0
+          inventory[car] = train.count_cars(car)
+        end
+      end
+    end
+    inventory
+  end
 end
