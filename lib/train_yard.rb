@@ -51,4 +51,13 @@ class TrainYard
     end
     inventory
   end
+
+  def overflow_cars
+    big_cars = total_inventory.select do |car, num|
+      num >= 10
+    end.keys
+    big_cars.select do |car|
+      trains_containing(car).length > 1
+    end
+  end
 end
