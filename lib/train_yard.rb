@@ -25,7 +25,7 @@ class TrainYard
 
   def sorted_cargo_list
     cargo = @trains.flat_map do |train|
-      train.cargo.keys.map do |car|
+      cars_in_yard.map do |car|
         car.type
       end
     end.uniq
@@ -71,7 +71,7 @@ class TrainYard
         elsif to_remove > 0 && train.count_cars(car) > to_remove
           train.cargo[car] -= to_remove
           to_remove = 0
-        end 
+        end
       end
       true
     else
