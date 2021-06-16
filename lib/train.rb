@@ -14,4 +14,12 @@ class Train
       @cargo[car] = num
     end
   end
+
+  def count_cars(car)
+    if @cargo.has_key?(car)
+      @cargo[car]
+    else
+      0
+    end
+  end
 end
