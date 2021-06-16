@@ -31,4 +31,17 @@ class TrainYard
     end.uniq
     cargo.sort
   end
+
+  def cars_in_yard
+    @trains.flat_map do |train|
+      train.cargo.keys
+    end.uniq
+  end
+
+  # def total_inventory
+  #   inventory = {}
+  #   @trains.each do |train|
+  #     train.cargo.keys.each do |car|
+  #
+  # end
 end
