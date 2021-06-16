@@ -14,6 +14,12 @@ class TrainYard
     types = @trains.map do |train|
       train.type
     end.uniq
-    types.sort 
+    types.sort
+  end
+
+  def trains_containing(car)
+    @trains.select do |train|
+      train.cargo.keys.include?(car)
+    end 
   end
 end
