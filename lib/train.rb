@@ -22,4 +22,10 @@ class Train
       0
     end
   end
+
+  def weight
+    @cargo.sum do |train, num|
+      train.weight * num
+    end 
+  end
 end
