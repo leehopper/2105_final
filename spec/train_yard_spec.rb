@@ -153,7 +153,7 @@ describe TrainYard do
     expect(train_yard.cars_in_yard).to eq([car1, car4, car3])
   end
 
-  xit '.total_inventory' do
+  it '.total_inventory' do
     train_yard = TrainYard.new({location: 'Brighton'})
     car1 = Car.new({type: 'Mail', weight: 5})
     car2 = Car.new({type: 'Passengers', weight: 1})
@@ -181,7 +181,7 @@ describe TrainYard do
     expected = {
       car1 => 12,
       car3  => 10,
-      car3 => 9
+      car4 => 9
       }
 
     expect(train_yard.total_inventory).to eq(expected)
