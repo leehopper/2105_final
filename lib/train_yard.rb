@@ -20,6 +20,15 @@ class TrainYard
   def trains_containing(car)
     @trains.select do |train|
       train.cargo.keys.include?(car)
-    end 
+    end
+  end
+
+  def sorted_cargo_list
+    cargo = @trains.flat_map do |train|
+      train.cargo.keys.map do |car|
+        car.type
+      end
+    end.uniq
+    cargo.sort
   end
 end
