@@ -60,4 +60,22 @@ class TrainYard
       trains_containing(car).length > 1
     end
   end
+
+  def unload(car, quantity)
+    if total_inventory[car] >= quantity
+      to_remove = quantity
+      trains_containing(car).each do |train|
+        if to_remove > 0 && train.count_cars(car) < to_remove
+          to_remove -= train.cargo[car]
+          train.cargo[car] = 0
+        elsif to_remove > 0 && train.count_cars(car) > to_remove
+          train.cargo[car] -= to_remove
+          to_remove = 0
+        end 
+      end
+      true
+    else
+      false
+    end
+  end
 end
